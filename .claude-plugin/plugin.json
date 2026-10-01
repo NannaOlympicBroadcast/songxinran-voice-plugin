@@ -1,0 +1,8 @@
+{
+  "name": "songxinran-voice",
+  "displayName": "宋昕冉 AI 音色（so-vits-svc）",
+  "version": "0.1.0",
+  "description": "把人声音频转换为「宋昕冉 AI 音色」（粉丝自制、非官方、非商用）。默认使用本机 NVIDIA GPU 运行 so-vits-svc 4.1；无 GPU 时回退到 ModelScope 创空间。输出必须标注 AI 生成。",
+  "license": "MIT",
+  "keywords": ["so-vits-svc", "voice-conversion", "snh48", "modelscope", "fan-made"]
+}
