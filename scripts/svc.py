@@ -49,12 +49,16 @@ def run_cloud(a):
         from gradio_client import Client, handle_file
     except ImportError:
         raise SystemExit("云端回退需要 gradio_client：pip install gradio_client")
+    tok = os.environ.get("MODELSCOPE_API_TOKEN")
+    if not tok:
+        raise SystemExit("云端回退需要环境变量 MODELSCOPE_API_TOKEN（你自己的 ModelScope 访问令牌；"
+                         "创空间 API 不接受匿名调用，令牌不要写进仓库）")
     url = os.environ.get("SXR_STUDIO_URL")
     if not url:
         sid = os.environ.get("SXR_STUDIO_ID", DEFAULT_STUDIO)
-        url = "https://" + sid.replace("/", "-").replace("_", "-").lower() + ".ms.show"
+        url = "https://studio-" + sid.replace("/", "-") + ".api-inference.modelscope.net"
     print(f"[cloud] {url}（免费 CPU，较慢，单段 ≤60s）", flush=True)
-    c = Client(url)
+    c = Client(url, headers={"Authorization": "Bearer " + tok}, verbose=False)
     res = c.predict(handle_file(a.input), a.key, True, api_name="/convert")
     path = res[0] if isinstance(res, (list, tuple)) else res
     shutil.copyfile(path, a.out)
