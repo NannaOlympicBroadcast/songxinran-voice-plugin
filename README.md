@@ -20,7 +20,9 @@
 - `SXR_SOVITS_DIR`：本地 so-vits-svc 目录（含 `inference_main.py`、`logs/44k/G_9600.pth`、`pretrain/`）
 - `SXR_PYTHON`：运行 so-vits 的 python（默认当前解释器）
 - `SXR_CKPT` / `SXR_CONFIG`：默认 `logs/44k/G_9600.pth`、`logs/44k/config.json`
-- `SXR_STUDIO_URL`：创空间直连地址（默认由 `SXR_STUDIO_ID` 推导，请以创空间页面实际地址为准）
+- `MODELSCOPE_API_TOKEN`：云端回退必需，你自己的 ModelScope 令牌（创空间 API 不接受匿名调用）
+- `SXR_STUDIO_URL`：创空间 API 地址，默认 `https://studio-yanyan0406-snh48songxinran-sovits-demo.api-inference.modelscope.net`（已于 2026-10-01 实测可用：6 秒音频约 25 秒返回）
+- 创空间页面：<https://www.modelscope.cn/studios/yanyan0406/snh48songxinran-sovits-demo>（网页可直接上传试用）
 - 权重：<https://www.modelscope.cn/models/yanyan0406/snh48songxinran-sovits>
 
 ## 使用
